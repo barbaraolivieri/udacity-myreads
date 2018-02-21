@@ -17,8 +17,8 @@ class Book extends Component {
   // Função para avaliar a mudança de categoria
 
   changeCategory(value){
-  	const { updateBooks } = this.props;
-  	updateBooks(this.props,value); // propriedade de atualizar livros receberá value
+  	const { updatingBooks } = this.props;
+  	updatingBooks(this.props,value); // propriedade de atualizar livros receberá value
 
   }
 
@@ -46,7 +46,8 @@ class Book extends Component {
 				    <div className="book-shelf-changer">
 
 
-	                  <select value={category}>		
+	                  <select  value={ category }
+                            onChange={ (event) => this.changeCategory(event.target.value) }>		
 	                    <option value="none" disabled>Move to...</option>
 	                    <option value="currentlyReading">Currently Reading</option>
 	                    <option value="wantToRead">Want to Read</option>

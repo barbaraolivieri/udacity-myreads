@@ -27,7 +27,7 @@ class Categories extends Component {
 
 	render() {
 
-		const {updateBooks} = this.props;
+		const {updatingBooks} = this.props;
 	return(
       <div className="list-books">
         <div className="list-books-title">
@@ -36,11 +36,11 @@ class Categories extends Component {
         <div className="list-books-content">
           <div>
           	<ListBooks categoryTitle="Currently Reading" books={ this._filterAnalysis('currentlyReading')} 
-          	updateBooks={updateBooks} />
-          	<ListBooks categoryTitle="Want to Read" books={ this._filterAnalysis('currentlyReading')}
-          	updateBooks={updateBooks} />
-          	<ListBooks categoryTitle="Read" books={ this._filterAnalysis('currentlyReading')}
-          	updateBooks={updateBooks} />
+          	updatingBooks={updatingBooks} />
+          	<ListBooks categoryTitle="Want to Read" books={ this._filterAnalysis('wantToRead')}
+          	updatingBooks={updatingBooks} />
+          	<ListBooks categoryTitle="Read" books={ this._filterAnalysis('read')}
+          	updatingBooks={updatingBooks} />
           </div>
          </div>
        </div>

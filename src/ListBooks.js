@@ -12,7 +12,7 @@ import Book from './Book';
 
 */
 
-function ListBooks( {books, updateBooks, categoryTitle} ){
+function ListBooks( {books, updatingBooks, categoryTitle} ){
 
 return (
 
@@ -25,7 +25,7 @@ return (
 				<li key={book.id} > 
 					<Book title={book.title} authors={book.authors}
 					imageLinks={book.imageLinks} category={book.shelf}
-					updateBooks={updateBooks} id={book.id}
+					updatingBooks={updatingBooks} id={book.id}
 					 
 					 />
 				</li>
