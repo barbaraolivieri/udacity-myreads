@@ -14,17 +14,33 @@ import ListBooks from './ListBooks';
 
 class Categories extends Component {
 
+/* 	Teremos que informar ao ListBooks o nome da categoria,
+	os livros adequadamente filtrados para ela e o método
+	para atualização
+*/
+
+	_filterAnalysis = (shelf) => {
+		const {books} = this.props;
+		return books.filter((b) => b.shelf === shelf )
+	}
+
 
 	render() {
+
+		const {updateBooks} = this.props;
+
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
           <div>
-          	<ListBooks/>
-          	<ListBooks/>
-          	<ListBooks/>
+          	<ListBooks categoryTitle="Currently Reading" books={ this._filterAnalysis('currentlyReading')} 
+          	updateBooks={updateBooks} />
+          	<ListBooks categoryTitle="Want to Read" books={} 
+          	updateBooks={updateBooks} />
+          	<ListBooks categoryTitle="Read" books={} 
+          	updateBooks={updateBooks} />
           </div>
          </div>
        </div>
