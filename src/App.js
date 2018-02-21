@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import Estante from './Estante'
+import Categories from './Categories'
 import * as BooksAPI from './BooksAPI';
 
 
@@ -22,10 +22,11 @@ class App extends React.Component {
 
     return (
       <div className="app">
-      <Estante books={this.state.books} />
+      <Categories books={books} />
         
      </div>
       );
+      
   }
 
 

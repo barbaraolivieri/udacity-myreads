@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Book from './book';
+import Book from './Book';
 
 /*
 	ListBooks será o componente responsável pela estrutura

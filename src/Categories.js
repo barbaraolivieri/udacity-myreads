@@ -28,7 +28,7 @@ class Categories extends Component {
 	render() {
 
 		const {updateBooks} = this.props;
-
+	return(
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
@@ -37,14 +37,14 @@ class Categories extends Component {
           <div>
           	<ListBooks categoryTitle="Currently Reading" books={ this._filterAnalysis('currentlyReading')} 
           	updateBooks={updateBooks} />
-          	<ListBooks categoryTitle="Want to Read" books={} 
+          	<ListBooks categoryTitle="Want to Read" books={ this._filterAnalysis('currentlyReading')}
           	updateBooks={updateBooks} />
-          	<ListBooks categoryTitle="Read" books={} 
+          	<ListBooks categoryTitle="Read" books={ this._filterAnalysis('currentlyReading')}
           	updateBooks={updateBooks} />
           </div>
          </div>
        </div>
-
+);
 
 	}
 
