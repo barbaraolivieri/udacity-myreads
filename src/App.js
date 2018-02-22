@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import Categories from './Categories'
+import SearchPage from './SearchPage';
 import * as BooksAPI from './BooksAPI';
 
 
@@ -49,6 +50,7 @@ class App extends React.Component {
       <div className="app">
       <Categories books={books}
       updatingBooks={this.updatingBooks} />
+      <SearchPage />
         
      </div>
       );
