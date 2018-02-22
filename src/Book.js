@@ -19,8 +19,13 @@ class Book extends Component {
   changeCategory(value){
   	const { updatingBooks } = this.props;
   	updatingBooks(this.props,value); // propriedade de atualizar livros receberá value
-
+  	this.setState({category: value})
   }
+
+   componentDidMount () {
+        const { category } = this.props;
+        this.setState({ category });
+    };
 
   render() {
 

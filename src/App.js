@@ -48,9 +48,10 @@ class App extends React.Component {
 
     return (
       <div className="app">
+      <SearchPage booksAvailable={books}  updatingBooks={this.updatingBooks}  />
       <Categories books={books}
       updatingBooks={this.updatingBooks} />
-      <SearchPage />
+
         
      </div>
       );
