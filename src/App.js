@@ -68,12 +68,12 @@ class App extends React.Component {
      <Categories books={books}
       updatingBooks={this.updatingBooks} 
       onNavigate={ () => {
-        this.setState({screen: 'create'})
+        this.setState({screen: 'search'})
       }
       }/>
         )} />
 
-      <Route path="/create" component={SearchPage} />
+      <Route path="/search" component={SearchPage} />
 
 
         
