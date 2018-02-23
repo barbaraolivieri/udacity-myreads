@@ -1,16 +1,29 @@
 import React from 'react'
-import './App.css'
-import Categories from './Categories'
+import './App.css';
+import { Route } from 'react-router-dom';
+import Categories from './Categories';
 import SearchPage from './SearchPage';
 import * as BooksAPI from './BooksAPI';
+
+/*
+  Para importar os livros da API usamos promises, obtendo-os
+  com . then e declarando que serão referenciados por 'books'
+  Também é criado um método para atualização, verificando
+  e atribuindo os dados necessários e fazendo a chamada de
+  atualização da API novamente
+  
+*/
 
 
 
 class App extends React.Component {
+
   state = {
+    screen: 'list',
     importingAPI: BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     })
+
   } 
 
   updatingBooks = (book, newCategory) => {
@@ -47,10 +60,21 @@ class App extends React.Component {
     }
 
     return (
+     
+
       <div className="app">
-      <SearchPage booksAvailable={books}  updatingBooks={this.updatingBooks}  />
-      <Categories books={books}
-      updatingBooks={this.updatingBooks} />
+
+      <Route path="/" exact render={() => (
+     <Categories books={books}
+      updatingBooks={this.updatingBooks} 
+      onNavigate={ () => {
+        this.setState({screen: 'create'})
+      }
+      }/>
+        )} />
+
+      <Route path="/create" component={SearchPage} />
+
 
         
      </div>

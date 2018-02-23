@@ -19,20 +19,21 @@ class Book extends Component {
   changeCategory(value){
   	const { updatingBooks } = this.props;
   	updatingBooks(this.props,value); // propriedade de atualizar livros receberá value
-  	this.setState({category: value})
+
   }
 
-   componentDidMount () {
-        const { category } = this.props;
-        this.setState({ category });
-    };
+
 
   render() {
 
   	//	As propriedades de cada livro presentes na API são: título, autor e capa
+  	const {category} = this.state;
 
   	const {title, authors, imageLinks} = this.props;
-  	const {category} = this.state;
+
+  	const {thumbnail} = imageLinks;
+
+
 
   	//	Capa precisa de tratamento especial para ser visualizada
 
@@ -47,7 +48,7 @@ class Book extends Component {
 
 		<div className="book">
 			<div className="book-top">
-				<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("{  }")` }} ></div> 
+				<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${ thumbnail }")` }} ></div> 
 				    <div className="book-shelf-changer">
 
 

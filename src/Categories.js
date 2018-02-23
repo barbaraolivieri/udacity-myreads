@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ListBooks from './ListBooks';
 
 /*	Esse componente tem como intuito listar as categorias
@@ -43,6 +44,9 @@ class Categories extends Component {
           	updatingBooks={updatingBooks} />
           </div>
          </div>
+            <div className="open-search">
+              <Link to="/create" >Add a book</Link>
+            </div>
        </div>
 );
 
