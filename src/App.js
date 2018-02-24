@@ -19,7 +19,6 @@ import * as BooksAPI from './BooksAPI';
 class App extends React.Component {
 
   state = {
-    screen: 'list',
     importingAPI: BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     })
@@ -73,8 +72,12 @@ class App extends React.Component {
       }/>
         )} />
 
-      <Route path="/search" component={SearchPage} />
 
+      <Route path="/search" render={ () => (
+        <SearchPage libraryBooks={books} updatingBooks={this.updatingBooks} />
+        )
+
+      } />
 
         
      </div>
