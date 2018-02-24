@@ -35,7 +35,10 @@ class Book extends Component {
   	//	As propriedades de cada livro presentes na API são: título, autor e capa
   	const {category} = this.state;
   	
-  	const {title, authors, imageLinks} = this.props;
+  	let {title, authors, imageLinks} = this.props;
+
+
+  	if(!imageLinks) {imageLinks = 'nd'}
 
 
   	//	Capa precisa de tratamento especial para ser visualizada

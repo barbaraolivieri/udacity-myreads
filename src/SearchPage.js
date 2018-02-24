@@ -19,7 +19,7 @@ class SearchPage extends React.Component{
 
     this.setState({query: query.trim()});
 
-    if(query === '') { return;}
+    if(query === '') { return null;}
 
     BooksAPI.search(query, 10).then((showing)=> {
       if(showing && showing.length){
