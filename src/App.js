@@ -1,9 +1,10 @@
 import React from 'react'
-import './App.css';
-import { Route } from 'react-router-dom';
 import Categories from './Categories';
 import SearchPage from './SearchPage';
 import * as BooksAPI from './BooksAPI';
+import { Route } from 'react-router-dom';
+import './App.css';
+
 
 /*
   Para importar os livros da API usamos promises, obtendo-os
@@ -25,16 +26,29 @@ class App extends React.Component {
 
   } 
 
+  /* A função da API para atualizar a categoria
+  recebe qual livro e a categoria atual como
+  argumentos, retornando uma promise com um JSON
+  object
+
+  */
+
+
   updatingBooks = (book, newCategory) => {
     const {books} = this.state;
 
-    const bookId = books.findIndex((key) => {
-      return key.id === book.id;
+    const bookId = books.findIndex((b) => {
+      return b.id === book.id;
     });
 
     let categoryBooks = Object.assign([], books);
 
-    if(bookId === -1){
+    /* se o id do livro for menor que 0 (falso), quer dizer
+      que ele ainda não está disponível então teremos que adicionar
+      um novo livro, colocando (push) o livro na categoria escolhida
+      Caso ele já exista, apenas atribuimos a nova categoria a ele
+    */
+    if(bookId < 0){
       const newBook = Object.assign({}, book);
       newBook.shelf = newCategory;
       categoryBooks.push(newBook);
@@ -54,9 +68,10 @@ class App extends React.Component {
 
    const { books } = this.state;
     
-    if (!books) {
-      return null;
-    }
+    //apenas retornamos os livros caso eles existam
+
+    if (books) {
+      
 
     return (
      
@@ -82,6 +97,12 @@ class App extends React.Component {
         
      </div>
       );
+      } else{
+        return null;
+  
+      }
+
+
       
   }
 
