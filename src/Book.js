@@ -37,11 +37,11 @@ class Book extends Component {
   	
   	let {title, authors, imageLinks} = this.props;
 
+  	//	Capa precisa de tratamento especial para ser visualizada
 
   	if(!imageLinks) {imageLinks = 'showNothing'}
 
 
-  	//	Capa precisa de tratamento especial para ser visualizada
 
   	return(
 
