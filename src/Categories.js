@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import ListBooks from './ListBooks';
+import { Link } from 'react-router-dom';
 
 /*	Esse componente tem como intuito listar as categorias
 	existentes no MyReads, de forma a chamar ListBooks 
@@ -28,7 +28,8 @@ class Categories extends Component {
 
 	render() {
 
-		const {updatingBooks} = this.props;
+	const {updatingBooks} = this.props;
+  
 	return(
       <div className="list-books">
         <div className="list-books-title">
