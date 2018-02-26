@@ -23,6 +23,8 @@ class Categories extends Component {
 	_filterAnalysis = (shelf) => {
 		const {books} = this.props;
 		return books.filter((b) => b.shelf === shelf )
+
+
 	}
 
 

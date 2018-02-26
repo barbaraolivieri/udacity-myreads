@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Book from './Book';
 
 
@@ -10,9 +10,26 @@ import Book from './Book';
 
 
 
-function validatingSearch( {showingBooks, updatingBooks} ){
-	
+class validatingSearch extends Component {
 
+
+ verifyCategory = (libraryBooks, book) => {
+
+    const categorySearch = libraryBooks.filter((categorySearch) => (
+      categorySearch.id === book.id
+    ))[0]
+
+    if (categorySearch) {
+          return categorySearch.shelf}
+    else {return "none"}
+      
+  };
+
+  
+
+
+  render(){
+   const {libraryBooks, showingBooks, updatingBooks} = this.props;
     if(!showingBooks.error){
         return (    
               <ol className="books-grid">
@@ -21,11 +38,12 @@ function validatingSearch( {showingBooks, updatingBooks} ){
                             <li key={ book.id }>
                                 <Book
                                     id={ book.id }
-                                    category={ book.category }
+                                    category={ this.verifyCategory(libraryBooks, book) }
                                     authors={ book.authors }
                                     title={ book.title }
                                     imageLinks={ book.imageLinks }
                                     updatingBooks={ updatingBooks }
+
                                 />
                             </li>
                         ))
@@ -34,12 +52,17 @@ function validatingSearch( {showingBooks, updatingBooks} ){
       )} else{
           return (  
                <div className="errorSearching">
-               <center>	Sorry, no correspending books </center>
+               <center> Sorry, no correspending books </center>
                </div>
              )
 
         }
-	}
+
+
+  }
+}
+
+
 
 
 export default validatingSearch;

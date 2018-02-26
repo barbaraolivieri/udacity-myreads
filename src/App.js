@@ -33,7 +33,6 @@ class App extends React.Component {
 
   */
 
-
   updatingBooks = (book, newCategory) => {
     const {books} = this.state;
 

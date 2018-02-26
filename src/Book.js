@@ -24,10 +24,16 @@ class Book extends Component {
   }
 
 
+
+
+
   componentDidMount() {
   	const {category} = this.props;
   	this.setState({category});
+
   }
+
+
 
 
   render() {
@@ -42,8 +48,8 @@ class Book extends Component {
   	if(!imageLinks) {imageLinks = 'showNothing'}
 
 
-
   	return(
+
 
  /*     O componente do livro deverá retornar a estrutura básica
 		html presente no arquivo de início, especificamente na
@@ -60,11 +66,11 @@ class Book extends Component {
 
 	                  <select  value={ category }
                             onChange={ (event) => this.changeCategory(event.target.value) }>		
-	                    <option value="none" disabled>Move to...</option>
-	                    <option value="currentlyReading">Currently Reading</option>
-	                    <option value="wantToRead">Want to Read</option>
-	                    <option value="read">Read</option>
-	                    <option   value="none">None</option>
+	                    <option  value="none" disabled>Move to...</option>
+	                    <option id="currentlyReading" value="currentlyReading" >Currently Reading</option>
+	                    <option id="wantToRead" value="wantToRead">Want to Read</option>
+	                    <option id="read" value="read">Read</option>
+	                    <option  id="none"    value="none">None</option>
 	                  </select>
 	                </div>
 			</div>

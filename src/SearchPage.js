@@ -31,6 +31,9 @@ class SearchPage extends React.Component{
 
   };
 
+ 
+
+
 
 
 	render(){
@@ -39,6 +42,7 @@ class SearchPage extends React.Component{
     const {query} = this.state
     const {updatingBooks} = this.props;
     let {books} = this.state;
+    const {libraryBooks} = this.props;
     let showingBooks = books;
 
     // Se não há nada digitado ou nenhum livro, não há livros para serem mostrados
@@ -61,7 +65,7 @@ class SearchPage extends React.Component{
             </div>
             <div className="search-books-results">
           {/*Chamando componente para validar casos que possuam erros */}
-              <ValidatingSearch showingBooks={showingBooks} 
+              <ValidatingSearch libraryBooks={libraryBooks} showingBooks={showingBooks} 
               updatingBooks={updatingBooks} />
             </div>
           </div>
