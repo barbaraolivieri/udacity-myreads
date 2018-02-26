@@ -18,37 +18,19 @@ return (
 
     <div className="bookshelf">
      <h2 className="bookshelf-title">{categoryTitle}</h2>
-      <div className="bookshelf-books">
-        
-		 <ol className='books-grid'>
+      <div className="bookshelf-books"> 
+		<ol className='books-grid'>
 			{books.map((book) => (
 				<li key={book.id} > 
 					<Book title={book.title} authors={book.authors}
 					imageLinks={book.imageLinks} category={book.shelf}
 					updatingBooks={updatingBooks} id={book.id}
-					 
 					 />
-				</li>
-			) ) }
-
+				</li>) ) }
 		</ol> 
-
-
-
       </div>
     </div>
-
-
-
-
-		)
-
-
-	}
-
-
-
-
-
+	)
+}
 
 export default ListBooks;
