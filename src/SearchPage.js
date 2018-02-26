@@ -30,6 +30,8 @@ class SearchPage extends React.Component{
     let showingBooks = books;
 
     // Se não há nada digitado ou nenhum livro, não há livros para serem mostrados
+    // Para realizar a validação com atribuição, showingBooks foi declarado como let,
+    // por isso o uso de uma variável auxiliar
 
     if(!query || !books){
       showingBooks = []

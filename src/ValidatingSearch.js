@@ -13,16 +13,14 @@ class validatingSearch extends Component {
  verifyCategory = (libraryBooks, book) => {
 
     const categorySearch = libraryBooks.filter((categorySearch) => (
-      categorySearch.id === book.id
-    ))[0]
+          categorySearch.id === book.id ))[0]
 
-    if (categorySearch) {
-          return categorySearch.shelf}
-    else {return "none"}
-      
-  };
+    if (!categorySearch) { return "none"}
+    else { return categorySearch.shelf}    
+ };
 
   render(){
+    
    const {libraryBooks, showingBooks, updatingBooks} = this.props;
 
     if(!showingBooks.error){
