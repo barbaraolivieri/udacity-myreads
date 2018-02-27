@@ -1,5 +1,5 @@
-import React from 'react';
-import Book from './Book';
+import React from "react";
+import Book from "./Book";
 
 /*
 	ListBooks será o componente responsável pela estrutura
@@ -12,25 +12,28 @@ import Book from './Book';
 
 */
 
-function ListBooks( {books, updatingBooks, categoryTitle} ){
-
-return (
-
-    <div className="bookshelf">
-     <h2 className="bookshelf-title">{categoryTitle}</h2>
-      <div className="bookshelf-books"> 
-		<ol className='books-grid'>
-			{books.map((book) => (
-				<li key={book.id} > 
-					<Book title={book.title} authors={book.authors}
-					imageLinks={book.imageLinks} category={book.shelf}
-					updatingBooks={updatingBooks} id={book.id}
-					 />
-				</li>) ) }
-		</ol> 
-      </div>
-    </div>
-	)
+function ListBooks({ books, updatingBooks, categoryTitle }) {
+	return (
+		<div className="bookshelf">
+			<h2 className="bookshelf-title">{categoryTitle}</h2>
+			<div className="bookshelf-books">
+				<ol className="books-grid">
+					{books.map(book => (
+						<li key={book.id}>
+							<Book
+								title={book.title}
+								authors={book.authors}
+								imageLinks={book.imageLinks}
+								category={book.shelf}
+								updatingBooks={updatingBooks}
+								id={book.id}
+							/>
+						</li>
+					))}
+				</ol>
+			</div>
+		</div>
+	);
 }
 
 export default ListBooks;

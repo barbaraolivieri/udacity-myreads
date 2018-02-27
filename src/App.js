@@ -1,9 +1,9 @@
-import React from 'react'
-import Categories from './Categories';
-import SearchPage from './SearchPage';
-import * as BooksAPI from './BooksAPI';
-import { Route } from 'react-router-dom';
-import './App.css';
+import React from "react";
+import Categories from "./Categories";
+import SearchPage from "./SearchPage";
+import * as BooksAPI from "./BooksAPI";
+import { Route } from "react-router-dom";
+import "./App.css";
 
 /*
   Para importar os livros da API usamos promises, obtendo-os
@@ -15,12 +15,11 @@ import './App.css';
 */
 
 class App extends React.Component {
-
   state = {
-    importingAPI: BooksAPI.getAll().then((books) => {
-      this.setState({ books: books })
+    importingAPI: BooksAPI.getAll().then(books => {
+      this.setState({ books: books });
     })
-  } 
+  };
 
   /* A função da API para atualizar a categoria
   recebe qual livro e a categoria atual como
@@ -29,10 +28,10 @@ class App extends React.Component {
   */
 
   updatingBooks = (book, newCategory) => {
-
-    const {books} = this.state;
-    const bookId = books.findIndex((b) => {
-      return b.id === book.id; });
+    const { books } = this.state;
+    const bookId = books.findIndex(b => {
+      return b.id === book.id;
+    });
 
     let categoryBooks = Object.assign([], books);
 
@@ -42,45 +41,57 @@ class App extends React.Component {
       Caso ele já exista, apenas atribuimos a nova categoria a ele
     */
 
-    if(bookId < 0){
+    if (bookId < 0) {
       const newBook = Object.assign({}, book);
       newBook.shelf = newCategory;
       categoryBooks.push(newBook);
-    }else{
-    categoryBooks[bookId] = Object.assign({}, categoryBooks[bookId]);
-    categoryBooks[bookId].shelf = newCategory;}
+    } else {
+      categoryBooks[bookId] = Object.assign({}, categoryBooks[bookId]);
+      categoryBooks[bookId].shelf = newCategory;
+    }
 
-    BooksAPI.update(book, newCategory).then(this.setState({books: categoryBooks}));
-};
+    BooksAPI.update(book, newCategory).then(
+      this.setState({ books: categoryBooks })
+    );
+  };
 
-  render(){
+  render() {
+    const { books } = this.state;
 
-   const { books } = this.state;
-    
     //apenas retornamos os livros caso eles existam
 
     if (books) {
-
       return (
         <div className="app">
-          <Route path="/" exact render={() => (
-            <Categories 
-            books={books}
-            updatingBooks={this.updatingBooks} 
-            onNavigate={ () => {
-              this.setState({screen: 'search'}) }} />)} 
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <Categories
+                books={books}
+                updatingBooks={this.updatingBooks}
+                onNavigate={() => {
+                  this.setState({ screen: "search" });
+                }}
+              />
+            )}
           />
 
-        <Route path="/search" render={ () => (
-          <SearchPage libraryBooks={books} updatingBooks={this.updatingBooks} /> ) } 
-        />
-       </div>
-     );
-    } else{
-        return null; }
+          <Route
+            path="/search"
+            render={() => (
+              <SearchPage
+                libraryBooks={books}
+                updatingBooks={this.updatingBooks}
+              />
+            )}
+          />
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
-
-
 
 export default App;
